@@ -6,5 +6,8 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  "vars": {
+    "DEFAULT_SOURCES": "[{\"name\":\"量子\",\"url\":\"https://cj.lziapi.com/api.php/provide/vod\"},{\"name\":\"HD量子\",\"url\":\"https://360zy.com/api.php/provide/vod/at/json\"},{\"name\":\"金鹰1\",\"url\":\"https://jinyingzy.com/api.php/provide/vod\"},{\"name\":\"金鹰2\",\"url\":\"https://jyzyapi.com/api.php/provide/vod\"},{\"name\":\"速博\",\"url\":\"https://subocaiji.com/api.php/provide/vod\"},{\"name\":\"HD索尼\",\"url\":\"https://suoniapi.com/api.php/provide/vod/from/snm3u8/\"},{\"name\":\"红牛\",\"url\":\"https://www.hongniuzy2.com/api.php/provide/vod/at/json\"},{\"name\":\"非凡\",\"url\":\"http://cj.ffzyapi.com/api.php/provide/vod/\"},{\"name\":\"HD爱坤\",\"url\":\"https://ikunzyapi.com/api.php/provide/vod/at/json\"},{\"name\":\"U酷\",\"url\":\"https://api.ukuapi88.com/api.php/provide/vod\"},{\"name\":\"光速\",\"url\":\"https://api.guangsuapi.com/api.php/provide/vod/json\"},{\"name\":\"樱花\",\"url\":\"https://m3u8.apiyhzy.com/api.php/provide/vod/\"},{\"name\":\"HD暴风\",\"url\":\"https://bfzyapi.com/api.php/provide/vod/\"}]"
   }
 }
