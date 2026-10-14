@@ -1,4 +1,3 @@
-import { gunzipSync } from 'node:zlib';
 import type { EpgProgram } from './types';
 
 /**
@@ -73,16 +72,16 @@ function extractAttrs(attrText: string): Record<string, string> {
  * 只保留 `[now, now + windowMs]` 窗口内的节目，按频道分组并按开播时间排序。
  */
 export function parseXmltv(
-  content: string | Buffer,
+  content: string | Uint8Array,
   windowMs: number = DEFAULT_WINDOW_MS,
   now: number = Date.now()
 ): Map<string, EpgProgram[]> {
   let text: string;
-  if (Buffer.isBuffer(content)) {
-    text =
-      content.length >= 2 && content[0] === 0x1f && content[1] === 0x8b
-        ? gunzipSync(content).toString('utf8')
-        : content.toString('utf8');
+  if (content instanceof Uint8Array) {
+    if (content.length >= 2 && content[0] === 0x1f && content[1] === 0x8b) {
+      return new Map();
+    }
+    text = new TextDecoder('utf-8').decode(content);
   } else {
     text = content;
   }
