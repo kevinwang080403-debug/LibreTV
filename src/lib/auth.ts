@@ -3,13 +3,25 @@
  * Edge Runtime 兼容版：使用 Web Crypto API（crypto.subtle），所有加密操作异步化。
  */
 
+import { getCloudflareContext } from '@opennextjs/cloudflare';
+
 export const SESSION_COOKIE = 'ltv_session';
 const SESSION_TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90 天
 
 const encoder = new TextEncoder();
 
+function cfEnv(key: string): string | undefined {
+  try {
+    const env = getCloudflareContext().env as Record<string, string | undefined>;
+    if (env && env[key]) return env[key];
+  } catch {
+    // getCloudflareContext 不可用（非 Workers 环境），回退到 process.env
+  }
+  return process.env[key];
+}
+
 export function getPassword(): string {
-  return process.env.PASSWORD || '';
+  return cfEnv('PASSWORD') || '';
 }
 
 export function isPasswordConfigured(): boolean {
@@ -33,7 +45,8 @@ async function sha256Bytes(input: string): Promise<Uint8Array> {
 }
 
 async function getSecret(): Promise<string> {
-  if (process.env.PROXY_SECRET) return process.env.PROXY_SECRET;
+  const secret = cfEnv('PROXY_SECRET');
+  if (secret) return secret;
   return sha256Hex(getPassword() + ':libretv::session-salt');
 }
 
