@@ -6,7 +6,7 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "next dev -p 8080",
-    "build": "next build",
+    "build": "node scripts/inject-wrangler-vars.cjs && next build",
     "start": "next start -p 8080",
     "lint": "eslint src",
     "typecheck": "tsc --noEmit",
