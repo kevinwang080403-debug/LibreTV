@@ -189,7 +189,7 @@ function aggregateOutcomes(outcomes: SourceSearchOutcome[], wd: string, filterAd
  *   最终推送聚合后的 done 事件并写入短缓存。
  */
 export async function POST(req: Request) {
-  const guarded = guardRequest(req);
+  const guarded = await guardRequest(req);
   if (guarded) return guarded;
 
   let body: SearchBody;

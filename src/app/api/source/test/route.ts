@@ -8,7 +8,7 @@ export const runtime = 'edge';
 
 /** 点播源探活：以搜索 "test" 的响应耗时与结果量衡量可用性 */
 export async function POST(req: Request) {
-  const guarded = guardRequest(req);
+  const guarded = await guardRequest(req);
   if (guarded) return guarded;
 
   let url = '';

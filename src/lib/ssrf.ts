@@ -1,5 +1,3 @@
-import dns from 'node:dns/promises';
-
 /** 去掉 URL.hostname 对 IPv6 附加的方括号（"[::1]" → "::1"） */
 function stripBrackets(host: string): string {
   return host.trim().replace(/^\[+|\]+$/g, '');
@@ -52,17 +50,16 @@ export function isValidProxyUrl(urlString: string): boolean {
   }
 }
 
-/** DNS 解析后校验目标主机名是否解析到内网/保留地址 */
+/** DNS 解析后校验目标主机名是否解析到内网/保留地址（Edge Runtime 下无 DNS，仅字面量 IP 校验） */
 export async function isBlockedByDNS(urlString: string): Promise<boolean> {
   try {
     const hostname = stripBrackets(new URL(urlString).hostname);
     if (/^\d{1,3}(\.\d{1,3}){3}$/.test(hostname) || hostname.includes(':')) {
       return isPrivateIP(hostname);
     }
-    const result = await dns.lookup(hostname, { all: true });
-    return result.some((r) => isPrivateIP(r.address));
+    return false;
   } catch {
-    return false; // 解析失败不阻断，交给后续请求处理
+    return false;
   }
 }
 

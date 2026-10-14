@@ -26,7 +26,7 @@ function parseSource(raw: string | null): SourceConfig | null {
  * 拿不到播放地址时（部分源需要爬详情页）降级到 detail 页 HTML 提取。
  */
 export async function GET(req: Request) {
-  const guarded = guardRequest(req);
+  const guarded = await guardRequest(req);
   if (guarded) return guarded;
 
   const url = new URL(req.url);

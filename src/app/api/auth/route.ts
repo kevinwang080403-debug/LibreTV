@@ -27,12 +27,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error: '请求格式错误' }, { status: 400 });
   }
 
-  if (!checkPassword(password)) {
+  if (!(await checkPassword(password))) {
     return NextResponse.json({ success: false, error: '密码错误' }, { status: 401 });
   }
 
   clearRateLimit(ip);
-  const { token, expiresAt } = signSession();
+  const { token, expiresAt } = await signSession();
   const res = NextResponse.json({ success: true });
   // Cookie Secure 策略：COOKIE_SECURE 环境变量显式覆盖；否则按 x-forwarded-proto 推导。
   // 不能依赖 req.url——Next.js Route Handler 中它是内部转发地址，并非用户侧的原始协议。
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 
 /** GET：查询当前会话状态 */
 export async function GET(req: Request) {
-  const verified = sessionFromCookieHeader(req.headers.get('cookie'));
+  const verified = await sessionFromCookieHeader(req.headers.get('cookie'));
   return NextResponse.json({ success: true, verified });
 }
 

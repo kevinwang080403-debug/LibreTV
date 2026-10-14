@@ -57,7 +57,7 @@ function normalizePayload(raw: unknown): { name?: string; sources: VodOut[]; liv
 
 /** 把当前源列表发布到第三方粘贴板，返回可直接填入订阅框的 URL */
 export async function POST(req: Request) {
-  const guarded = guardRequest(req);
+  const guarded = await guardRequest(req);
   if (guarded) return guarded;
 
   let raw: unknown;
