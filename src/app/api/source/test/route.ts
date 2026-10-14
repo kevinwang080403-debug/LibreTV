@@ -4,7 +4,7 @@ import { checkUpstreamAllowed } from '@/lib/ssrf';
 import { fetchUpstream } from '@/lib/fetch-utils';
 import { parseSearchList } from '@/lib/cms-parser';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /** 点播源探活：以搜索 "test" 的响应耗时与结果量衡量可用性 */
 export async function POST(req: Request) {

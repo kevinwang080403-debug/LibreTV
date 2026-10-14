@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { guardRequest } from '@/lib/api-guard';
 import { fetchHotList, isHotListId } from '@/lib/douban-weekly';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /** 影视热榜（经 60s API 免 key）：豆瓣五个周榜 + 百度热播剧，服务端转发 + 缓存 */
 export async function GET(req: Request) {

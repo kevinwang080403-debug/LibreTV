@@ -6,7 +6,7 @@ import { getLiveCache, setLiveCache } from '@/lib/live-cache';
 import { currentAndNext, parseXmltv } from '@/lib/xmltv';
 import type { EpgProgram } from '@/lib/types';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000;

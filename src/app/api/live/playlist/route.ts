@@ -6,7 +6,7 @@ import { getLiveCache, setLiveCache } from '@/lib/live-cache';
 import { parseM3u } from '@/lib/m3u-parser';
 import type { LivePlaylistResponse } from '@/lib/types';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 const CACHE_TTL_MS = 10 * 60 * 1000;

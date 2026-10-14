@@ -3,7 +3,7 @@ import { guardRequest } from '@/lib/api-guard';
 import { MAX_LIVE_SOURCES, MAX_VOD_SOURCES } from '@/lib/source-list';
 import { MAX_PUBLISH_BYTES, publishSourceList } from '@/lib/source-list-publish';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /** 单个字段长度上限：源名与地址再长也不该超过这个量级 */
 const MAX_FIELD_LEN = 2048;

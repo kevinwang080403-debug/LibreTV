@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { guardRequest } from '@/lib/api-guard';
 import { fetchDoubanRecommend } from '@/lib/douban';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /** 豆瓣推荐：服务端直连 + 缓存，替代旧版浏览器经公共 CORS 代理的方案 */
 export async function GET(req: Request) {

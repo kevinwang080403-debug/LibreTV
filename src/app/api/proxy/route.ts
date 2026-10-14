@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { handleProxyRequest } from '@/lib/proxy-handlers';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /**
  * 查询串形式的通用代理：/api/proxy?url=<encodeURIComponent(target)>。

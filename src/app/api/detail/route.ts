@@ -5,7 +5,7 @@ import { fetchUpstream, getCache, setCache } from '@/lib/fetch-utils';
 import { checkUpstreamAllowed } from '@/lib/ssrf';
 import type { SourceConfig, VideoDetail } from '@/lib/types';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /** 详情结果短缓存：换源测速/多人观看同一影片时避免重复打上游 */
 const DETAIL_CACHE_TTL = 60 * 1000;

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { SESSION_COOKIE, checkRateLimit, sessionFromCookieHeader, signSession, checkPassword, clearRateLimit, isPasswordConfigured } from '@/lib/auth';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 export async function POST(req: Request) {
   if (!isPasswordConfigured()) {

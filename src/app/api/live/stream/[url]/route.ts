@@ -1,6 +1,6 @@
 import { decodePathTarget, handleLiveStreamRequest } from '@/lib/proxy-handlers';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 /** 旧路径形式的直播流代理：/api/live/stream/<encodeURIComponent(target)>，保持兼容 */

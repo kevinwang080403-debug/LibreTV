@@ -5,7 +5,7 @@ import { fetchUpstream } from '@/lib/fetch-utils';
 import { describeParseStats, parseSubscriptionJson, parseSubscriptionPayload, withSkipped } from '@/lib/tvbox-parser';
 import type { SourceListPayload } from '@/lib/types';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /**
  * 拉取远程数据源订阅，自动识别两种格式：
