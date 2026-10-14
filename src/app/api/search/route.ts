@@ -5,7 +5,7 @@ import { fetchUpstream, getCache, setCache } from '@/lib/fetch-utils';
 import { checkUpstreamAllowed } from '@/lib/ssrf';
 import type { SearchResponse, SearchStreamEvent, SourceConfig, SourceSearchOutcome } from '@/lib/types';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 interface SearchBody {
   wd: string;

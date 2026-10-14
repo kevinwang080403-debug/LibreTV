@@ -1,6 +1,6 @@
 import { handleLiveStreamRequest } from '@/lib/proxy-handlers';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 /**
